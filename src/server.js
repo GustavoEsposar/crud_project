@@ -1,12 +1,15 @@
+// --------------------------->     Imported Modules
 const express = require('express');
 const path = require('path');
+// --------------------------->     Created modules
 const db = require('./database');
 const routes = require('./routes');
-
-const app = express();
-
+// --------------------------->     database settings
 // database connection
 db.connect()
+
+// --------------------------->     app settings
+const app = express();
 
 //define template engine
 app.set('view engine', 'ejs')
@@ -18,7 +21,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 //enable server to receive data through POST (forms)
 app.set(express.urlencoded({ extended: true }))
 
-// --------------------------->     rotes
+//defining routes
 app.use('/', routes)
 
 const port = process.env.PORT || 8080;

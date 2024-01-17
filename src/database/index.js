@@ -4,7 +4,7 @@ function connect() {
     // mongoose.set('useNewUrlParser', true)
     // mongoose.set('useUnifiedTopology', true)
     
-    mongoose.connect('mongodb://localhost:27017/')
+    mongoose.connect('mongodb://localhost:27017/crude-project')
     const db = mongoose.connection;
     
     db.once('open', () => {

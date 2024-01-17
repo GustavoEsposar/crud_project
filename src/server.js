@@ -1,7 +1,7 @@
-const { log } = require('console');
 const express = require('express');
 const path = require('path');
 const db = require('./database');
+const routes = require('./routes');
 
 const app = express();
 
@@ -19,15 +19,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.set(express.urlencoded({ extended: true }))
 
 // --------------------------->     rotes
-app.get('/', (req, res) => {
-    res.render('index', {
-        title: 'Titulo Teste'
-    })
-})
-
-app.use((req, res) => {
-    res.send('Pagina não encontrada!')
-})
+app.use('/', routes)
 
 const port = process.env.PORT || 8080;
 app.listen(port, () => console.log(`Server is listening on port ${port}`))

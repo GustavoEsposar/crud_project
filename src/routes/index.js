@@ -1,6 +1,8 @@
 
 const router = require('express').Router();
 
+const CustomersController = require('../controllers/customers')
+
 // --------------------------->     rotes
 
 router.get('/', (req, res) => {
@@ -9,8 +11,16 @@ router.get('/', (req, res) => {
     })
 })
 
+router.get('/register', (req, res) => {
+    res.render('register', {
+        title: 'Cadastro de Clientes'
+    })
+})
+
+router.post('/register/add', CustomersController.add)
+
 router.use((req, res) => {
-    res.send('Pagina não encontrada!')
+    res.send('Página não encontrada!')
 })
 
 module.exports = router;

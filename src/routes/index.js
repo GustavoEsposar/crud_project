@@ -2,22 +2,17 @@
 const router = require('express').Router();
 
 const CustomersController = require('../controllers/customers')
+const IndexController = require('../controllers/index')
 
 // --------------------------->     rotes
 
-router.get('/', (req, res) => {
-    res.render('index', {
-        title: 'Titulo Teste'
-    })
-})
+router.get('/', IndexController.index)
 
-router.get('/register', (req, res) => {
-    res.render('register', {
-        title: 'Cadastro de Clientes'
-    })
-})
+router.get('/register', CustomersController.index)
 
 router.post('/register/add', CustomersController.add)
+
+router.get('/list', CustomersController.listUsers)
 
 router.use((req, res) => {
     res.send('Página não encontrada!')

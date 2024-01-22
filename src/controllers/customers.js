@@ -63,8 +63,6 @@ async function edit(req, res) {
     const { id } = req.params;
     const user = await CustomersModel.findById(id);
 
-    console.log(user);
-
     user.name = name
     user.age = age
     user.email = email
@@ -78,10 +76,21 @@ async function edit(req, res) {
     })
 }
 
+async function remove(req, res) {
+    const { id } = req.params;
+
+    const remove = await CustomersModel.deleteOne({ _id: id});
+
+    if(remove.ok) {
+        res.redirect('list')
+    }
+}
+
 module.exports = {
     add,
     index,
     list,
     formEdit,
     edit,
+    remove,
 }

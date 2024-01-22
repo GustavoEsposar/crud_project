@@ -18,6 +18,8 @@ router.get('/edit', CustomersController.formEdit)
 
 router.post('/edit/:id', CustomersController.edit)
 
+router.get('/remove/:id', CustomersController.remove)
+
 router.use((req, res) => {
     res.send('Página não encontrada!')
 })
